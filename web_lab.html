@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab</title>
+     <!-- Реалізовано динамічні сторінки 2го рівня, при натисканні на архів новин з'являються інші новини, при натисканні на каталог(зверху) 
+     з'являється список товарів -->
+
+     <!-- Реалізовано звичайні сторінки 2го рівня,  при натисканні на каталог(footer) з'являється друга сторінка,при натисканні на доставка та оплата(зверху) з'являється друга сторінка-->
+
+     <!-- script в body  -->
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400&display=swap" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'PT Sans', sans-serif;
+			font-size: 14px;
+			line-height: 22px;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 0 10px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		header {
+            background-color: #eaeaea;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+       header img {
+       max-width: 70px;
+       height: auto;
+       }
+
+      .phone-numbers {
+         font-size: 20px;
+         margin-top: 10px;
+         margin-right: 350px;
+      }
+
+     .phone-numbers span {
+         display: block;
+      }
+
+		nav {
+			background-color: #333;
+			color: #fff;
+			width: 100%;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		nav ul li {
+			display: inline-block;
+			position: relative;
+		}
+
+		nav ul li a {
+			display: block;
+			padding: 10px 20px;
+			text-decoration: none;
+			color: #fff;
+			font-size: 30px;
+		}
+
+		nav ul li:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            height: 100%;
+            width: 2px;
+            background-color: #fff;
+        }
+
+        nav ul li:hover {
+            text-decoration: underline;
+        }
+
+		.slider {
+			position: relative;
+			width: 100%;
+			height: auto;
+			margin: 0;
+			overflow: hidden;
+		}
+
+		.slider .container {
+			position: relative;
+			max-width: 100%;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+		}
+
+		.slider .slider-image {
+			width: 100%;
+			max-height: 25vh;
+			object-fit: cover;
+			display: block;
+			margin: 0;
+		}
+
+
+		.content {
+			background-color: #fff;
+			padding: 20px;
+			flex: 1 1 50%;
+			margin-bottom: 130px; 
+		}
+
+		.content h1 {
+			font-size: 24px;
+			color: #333;
+		}
+
+		.content p {
+			color: #666;
+		}
+
+		.news {
+			width: 200px;
+			background-color: #f2f2f2;
+			padding: 10px;
+			flex: 1 1 25%; 
+			margin-bottom: 130px;
+			margin-right: 40px;
+			margin-top: 25px;
+		}
+
+		.news h2 {
+			font-size: 18px;
+			color: #333;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		.news ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.news li {
+			padding: 15px;
+			margin-bottom: 5px;
+		}
+
+		.archive-link {
+            text-align: right;
+            margin-top: 20px;
+        }
+		
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eaeaea;
+  padding: 20px 0;
+  color: #666;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-left ul{
+	list-style: none;
+}
+
+.footer-middle ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.footer-middle li {
+  margin-bottom: 10px; 
+}
+strong{
+   font-style: oblique;
+}
+
+.logo-container {
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 300px; 
+}
+
+.company-name {
+  margin-left: 10px; 
+  font-size: 18px;
+}
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  margin-left: 10px; 
+  margin-top: 5px; 
+}
+
+.footer-right img {
+  width: 100px; 
+  height: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+	</style>
+</head>
+<body>
+  <header>
+  <div class="logo-container">
+  <img src="https://img.freepik.com/premium-vector/garden-beer-logo-icon-vector-template_10060-619.jpg?w=2000" alt="Логотип">
+  <p class="company-name"><b>Пивний<br>Оазис<br></b>Найкращий пивний сад</p>
+</div>
+
+  
+  <div class="phone-numbers">
+    <span>+38(063) 777-33-66</span>
+    <span>+38(097) 777-33-66</span>
+  </div> 
+</header>
+  
+  <nav>
+    
+    <div class="container">
+      <ul>
+        <li><a href="#">Головна</a></li>
+        <li><a href="#" >Каталог</a></li>
+        <li><a href="#" onclick="openDeliveryPage()">Доставка та оплата</a></li>
+        <li><a href="#">Прайс-ліст</a></li>
+        <li><a href="#">Контакти</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="slider">
+    
+    <div class="container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Biergarten_at_Night_2.JPG/2560px-Biergarten_at_Night_2.JPG" alt="Изображение слайдера" class="slider-image">
+    </div>
+  </div>
+  
+  <div class="container">
+	<div class="news">
+    <h2>Новини</h2>
+    <ul>
+       <li>
+      <strong>7 травня 2023 р.</strong><br>
+      В Beer Garden відкривається сезон літніх фестивалів пива! 
+    </li>
+    <li>
+      <strong>12 травня 2023 р.</strong><br>
+      В Beer Garden проходить майстер-клас з пивоваріння! 
+    </li>
+    <li>
+      <strong>18 травня 2023 р.</strong><br>
+      Beer Garden представляє новий сорт пива - "Літній Бриз"! 
+    </li>
+    <li>
+      <strong>24 травня 2023 р.</strong><br>
+      Beer Garden запускає акцію "Пиво і гриль"! 
+    </li>
+    </ul>
+    <ul id="newsList" style="display: none;">   
+     <li>
+       <strong>8 квітня 2023 р.</strong><br>
+       Beer Garden оголошує пивний марафон, де учасники можуть спробувати різні сорти пива та отримати винагороду.
+     </li>
+     <li>
+       <strong>1 квітня 2023 р.</strong><br>
+       У Beer Garden проходить жартівлива акція "Пивний день сміху" з різноманітними розвагами та сюрпризами.
+     </li>
+     <li>
+       <strong>22 березня 2023 р.</strong><br>
+       Beer Garden представляє новий експериментальний сорт пива - "Весняна фантазія" з непересічним смаком і ароматом.
+     </li>
+     <li>
+       <strong>15 березня 2023 р.</strong><br>
+       Beer Garden оголошує вечір караоке з можливістю отримати безкоштовну пивну келиховку за кожне виконане пісню.
+     </li>
+     <li>
+       <strong>8 березня 2023 р.</strong><br>
+       Beer Garden відзначає Міжнародний жіночий день зі спеціальними знижками на пиво для всіх жінок.
+     </li>
+     <li>
+       <strong>1 березня 2023 р.</strong><br>
+       Beer Garden запускає спеціальну пропозицію "Весняний аромат" з пивом, в якому поєднуються свіжі трави та квіти.
+     </li>
+    </ul>
+    <div class="archive-link">
+      <a href="#" onclick="toggleNews()">Архів новин</a>
+    </div>
+  </div>
+
+	
+    
+    <div class="content">
+    <h1>Beer-Garden: "Пивний оазис"</h1>
+        <p>Ласкаво просимо до "Пивного оазису" – найкращого місця для любителів пива та приємного відпочинку! Розташований у самому серці міста, наш Beer-Garden запрошує вас на незабутню подорож у світ пивного задоволення. "Пивний оазис" пропонує вам справжню райську атмосферу, де ви зможете розслабитися, насолодитися свіжим повітрям та наситити себе смаками різноманітних сортів пива. Наш просторий та комфортний сад вміщує в себе декілька зон, де кожен знайде щось для себе.</p>
+        
+        <p>Зачарований світ пива розкриється перед вами, пропонуючи широкий вибір сортів – від кращих місцевих пивоварів до найвідоміших світових брендів. Наші кваліфіковані бармені допоможуть вам знайти ідеальний варіант, що задовольнить ваші смакові вподобання. "Пивний оазис" також відомий своєю унікальною кухнею, яка ідеально доповнює пивний досвід. Наші талановиті шеф-кухарі готують свіжі та смачні страви з використанням найкращих місцевих продуктів. Від класичних снеків до ситних страв – ви знайдете все, що потрібно для задоволення вашого гастрономічного апетиту.</p>
+        
+        <p>Крім того, "Пивний оазис" організовує різноманітні заходи та події, щоб зробити ваше перебування ще цікавішим та запам'ятовуванішим. Вечірки з живою музикою, тематичні дегустації пива, майстер-класи з пивоваріння – це лише деякі з активностей, які ми пропонуємо. Почуєте гучний шум сміху та радісних розмов, які наповнюють повітря. Наш привітний персонал завжди готовий зустріти вас з посмішкою, забезпечуючи неперевершений сервіс та затишну атмосферу.</p>
+   </div>
+</div>
+<script>
+	 function toggleNews() {
+      var newsList = document.getElementById("newsList");
+      newsList.style.display = newsList.style.display === "none" ? "block" : "none";
+    }
+
+  var catalogLink = document.querySelector('nav ul li:nth-child(2) a');
+
+  catalogLink.addEventListener('click', function(event) {
+  event.preventDefault(); 
+
+  var contentBlock = document.querySelector('.content');
+  contentBlock.innerHTML = ''; 
+
+  var beerList = document.createElement('ul');
+  beerList.style.fontSize = '18px'; 
+  beerList.style.lineHeight = '28px'; 
+
+  var beerTypes = [
+    { name: 'Світле', price: '50 грн за 0.5 л' },
+    { name: 'Темне', price: '60 грн за 0.5 л' },
+    { name: 'Пшеничне', price: '55 грн за 0.5 л' },
+    { name: 'IPA', price: '70 грн за 0.5 л' },
+    { name: 'Стаут', price: '65 грн за 0.5 л' },
+    { name: 'Лагер', price: '45 грн за 0.5 л' },
+    { name: 'Ель', price: '75 грн за 0.5 л' },
+    { name: 'Портер', price: '80 грн за 0.5 л' },
+  ];
+
+  for (var i = 0; i < beerTypes.length; i++) {
+    var beerItem = document.createElement('li');
+    beerItem.textContent = beerTypes[i].name + ' - ' + beerTypes[i].price;
+    beerList.appendChild(beerItem);
+  }
+
+  var snacksList = document.createElement('ul');
+  snacksList.style.fontSize = '18px'; 
+  snacksList.style.lineHeight = '28px'; 
+
+  var snacks = [
+    { name: 'Пивні горішки', price: '25 грн' },
+    { name: 'Ковбаски асорті', price: '35 грн' },
+    { name: 'Сирна тарілка', price: '40 грн' },
+    { name: 'Сирний тост', price: '30 грн' },
+    { name: 'Солоні чіпси', price: '15 грн' },
+    { name: 'Мясні кульки', price: '50 грн' },
+  ];
+
+  for (var i = 0; i < snacks.length; i++) {
+    var snackItem = document.createElement('li');
+    snackItem.textContent = snacks[i].name + ' - ' + snacks[i].price;
+    snacksList.appendChild(snackItem);
+  }
+
+  var heading = document.createElement('h2');
+  heading.textContent = 'Каталог';
+
+  contentBlock.appendChild(heading);
+  contentBlock.appendChild(document.createTextNode('Види пива:'));
+
+  contentBlock.appendChild(beerList);
+
+  contentBlock.appendChild(document.createElement('br'));
+  contentBlock.appendChild(document.createTextNode('Види закусок:'));
+
+  contentBlock.appendChild(snacksList);
+  });
+
+	function openCatalogPage() {
+    window.location.href = "web_lab_2nd.html";
+   }
+
+   function openDeliveryPage() {
+    window.location.href = "web_lab_3rd.html";
+   }
+
+</script>
+
+<footer>
+  <div class="footer-left">
+    <ul>
+      <li>2022-2023 Beer-Garden: "Пивний оазис"</li>
+      <li>ageru666@gmail.com</li>
+    </ul>
+  </div>
+  <div class="footer-middle">
+    <ul>
+      <li><a href="#">Головна</a></li>
+     <li><a href="#" onclick="openCatalogPage()">Каталог</a></li>
+      <li><a href="#">Доставка та оплата</a></li>
+      <li><a href="#">Прайс-ліст</a></li>
+      <li><a href="#">Контакти</a></li>
+    </ul>
+  </div>
+  <div class="footer-right">
+  	 <img src="https://img.freepik.com/premium-vector/garden-beer-logo-icon-vector-template_10060-619.jpg?w=2000" alt="Логотип">
+    <p>Розробка сайту - <br> Волошин Ілля Ігорович</p>
+  </div>
+</footer>
+</body>
+</html>

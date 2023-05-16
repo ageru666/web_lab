@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lab2</title>
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400&display=swap" rel="stylesheet">
+  <script>
+
+    function toggleNews() {
+      var newsList = document.getElementById("newsList");
+      newsList.style.display = newsList.style.display === "none" ? "block" : "none";
+    }
+
+  </script>
+	<style>
+    body {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 14px;
+      line-height: 22px;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 10px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    header {
+            background-color: #eaeaea;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+       header img {
+       max-width: 70px;
+       height: auto;
+       }
+
+      .phone-numbers {
+         font-size: 20px;
+         margin-top: 10px;
+         margin-right: 350px;
+      }
+
+     .phone-numbers span {
+         display: block;
+      }
+
+    nav {
+      background-color: #333;
+      color: #fff;
+      width: 100%;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline-block;
+      position: relative;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 30px;
+    }
+
+    nav ul li:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            height: 100%;
+            width: 2px;
+            background-color: #fff;
+        }
+
+        nav ul li:hover {
+            text-decoration: underline;
+        }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .slider .container {
+      position: relative;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .slider .slider-image {
+      width: 100%;
+      max-height: 25vh;
+      object-fit: cover;
+      display: block;
+      margin: 0;
+    }
+
+
+    .content {
+      background-color: #fff;
+      padding: 20px;
+      flex: 1 1 50%;
+      margin-bottom: 130px; 
+    }
+
+    .content h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .content p {
+      color: #666;
+    }
+
+    .news {
+      width: 200px;
+      background-color: #f2f2f2;
+      padding: 10px;
+      flex: 1 1 25%; 
+      margin-bottom: 130px;
+      margin-right: 40px;
+      margin-top: 25px;
+    }
+
+    .news h2 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .news ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .news li {
+      padding: 15px;
+      margin-bottom: 5px;
+    }
+
+    .archive-link {
+            text-align: right;
+            margin-top: 20px;
+        }
+    
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eaeaea;
+  padding: 20px 0;
+  color: #666;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-left ul{
+  list-style: none;
+}
+
+.footer-middle ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.footer-middle li {
+  margin-bottom: 10px; 
+}
+strong{
+   font-style: oblique;
+}
+
+.logo-container {
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 300px; 
+}
+
+.company-name {
+  margin-left: 10px; 
+  font-size: 18px;
+}
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  margin-left: 10px; 
+  margin-top: 5px; 
+}
+
+.footer-right img {
+  width: 100px; 
+  height: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo-container">
+  <img src="https://img.freepik.com/premium-vector/garden-beer-logo-icon-vector-template_10060-619.jpg?w=2000" alt="Логотип">
+  <p class="company-name"><b>Пивний<br>Оазис<br></b>Найкращий пивний сад</p>
+</div>
+
+  
+  <div class="phone-numbers">
+    <span>+38(063) 777-33-66</span>
+    <span>+38(097) 777-33-66</span>
+  </div> 
+</header>
+  
+  <nav>
+    
+    <div class="container">
+      <ul>
+        <li><a href="#">Головна</a></li>
+        <li><a href="#">Каталог</a></li>
+        <li><a href="#">Доставка та оплата</a></li>
+        <li><a href="#">Прайс-ліст</a></li>
+        <li><a href="#">Контакти</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="slider">
+    
+    <div class="container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Biergarten_at_Night_2.JPG/2560px-Biergarten_at_Night_2.JPG" alt="Изображение слайдера" class="slider-image">
+    </div>
+  </div>
+  
+  <div class="container">
+	<div class="news">
+    <h2>Новини</h2>
+    <ul>
+       <li>
+      <strong>7 травня 2023 р.</strong><br>
+      В Beer Garden відкривається сезон літніх фестивалів пива! 
+    </li>
+    <li>
+      <strong>12 травня 2023 р.</strong><br>
+      В Beer Garden проходить майстер-клас з пивоваріння! 
+    </li>
+    <li>
+      <strong>18 травня 2023 р.</strong><br>
+      Beer Garden представляє новий сорт пива - "Літній Бриз"! 
+    </li>
+    <li>
+      <strong>24 травня 2023 р.</strong><br>
+      Beer Garden запускає акцію "Пиво і гриль"! 
+    </li>
+    </ul>
+    <ul id="newsList" style="display: none;">   
+     <li>
+       <strong>8 квітня 2023 р.</strong><br>
+       Beer Garden оголошує пивний марафон, де учасники можуть спробувати різні сорти пива та отримати винагороду.
+     </li>
+     <li>
+       <strong>1 квітня 2023 р.</strong><br>
+       У Beer Garden проходить жартівлива акція "Пивний день сміху" з різноманітними розвагами та сюрпризами.
+     </li>
+     <li>
+       <strong>22 березня 2023 р.</strong><br>
+       Beer Garden представляє новий експериментальний сорт пива - "Весняна фантазія" з непересічним смаком і ароматом.
+     </li>
+     <li>
+       <strong>15 березня 2023 р.</strong><br>
+       Beer Garden оголошує вечір караоке з можливістю отримати безкоштовну пивну келиховку за кожне виконане пісню.
+     </li>
+     <li>
+       <strong>8 березня 2023 р.</strong><br>
+       Beer Garden відзначає Міжнародний жіночий день зі спеціальними знижками на пиво для всіх жінок.
+     </li>
+     <li>
+       <strong>1 березня 2023 р.</strong><br>
+       Beer Garden запускає спеціальну пропозицію "Весняний аромат" з пивом, в якому поєднуються свіжі трави та квіти.
+     </li>
+    </ul>
+    <div class="archive-link">
+      <a href="#" onclick="toggleNews()">Архів новин</a>
+    </div>
+  </div>
+
+	
+    
+   <div class="content">
+  <h2>Доставка</h2>
+  <p>Ми пропонуємо зручну доставку пива та закусок прямо до вашого дверей.</p>
+  <p>Вартість доставки:</p>
+  <ul>
+    <li>Доставка в межах міста - 50 грн</li>
+    <li>Доставка за межі міста - за домовленістю</li>
+  </ul>
+
+  <p>Час доставки:</p>
+  <ul>
+    <li>В межах міста - 1 година</li>
+    <li>За межі міста - узгоджується індивідуально</li>
+  </ul>
+
+  <h2>Оплата</h2>
+  <p>Ми приймаємо наступні способи оплати:</p>
+  <ul>
+    <li>Готівкою при отриманні замовлення</li>
+    <li>Оплата карткою при отриманні замовлення</li>
+    <li>Онлайн-оплата через платіжні системи</li>
+  </ul>
+</div>
+             
+</div>
+
+
+<footer>
+  <div class="footer-left">
+    <ul>
+      <li>2022-2023 Beer-Garden: "Пивний оазис"</li>
+      <li>ageru666@gmail.com</li>
+    </ul>
+  </div>
+  <div class="footer-middle">
+    <ul>
+      <li><a href="#">Головна</a></li>
+      <li><a href="#">Каталог</a></li>
+      <li><a href="#">Доставка та оплата</a></li>
+      <li><a href="#">Прайс-ліст</a></li>
+      <li><a href="#">Контакти</a></li>
+    </ul>
+  </div>
+  <div class="footer-right">
+  	 <img src="https://img.freepik.com/premium-vector/garden-beer-logo-icon-vector-template_10060-619.jpg?w=2000" alt="Логотип">
+    <p>Розробка сайту - <br> Волошин Ілля Ігорович</p>
+  </div>
+</footer>
+
+</body>
+</html>
